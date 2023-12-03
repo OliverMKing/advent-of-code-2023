@@ -59,6 +59,4 @@ for line in fileinput.input():
         r -= 1
     total += rNum
 
-    print(lNum, rNum)
-
 print(total)
