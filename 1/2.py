@@ -34,7 +34,6 @@ def getNumber(line: str, i: int) -> int | None:
     while currTrie[line[i]]:
         currTrie = currTrie[line[i]]
         if END_WORD_KEY in currTrie:
-
             return currTrie[END_WORD_KEY]
         
         i += 1
