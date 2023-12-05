@@ -22,16 +22,18 @@ def parseLine(line: str) -> Game:
 total = 0
 for line in fileinput.input():
     game = parseLine(line.strip())
-    ok = True
-    for round in game.rounds:
-        if "red" in round and round["red"] > ALLOWED_RED:
-            ok = False
-        if "green" in round and round["green"] > ALLOWED_GREEN:
-            ok = False
-        if "blue" in round and round["blue"] > ALLOWED_BLUE:
-            ok = False
 
-    if ok:
-        total += game.id
+    red = 0
+    green = 0
+    blue = 0
+    for round in game.rounds:
+        if "red" in round:
+            red = max(red, round["red"])
+        if "green" in round:
+            green = max(green, round["green"])
+        if "blue" in round:
+            blue = max(blue, round["blue"])
+
+    total += red * green * blue
 
 print(total)
